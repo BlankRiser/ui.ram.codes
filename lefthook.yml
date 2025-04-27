@@ -9,7 +9,8 @@ pre-commit:
     # Lint & Prettify TS and JS files
     lint-and-format-js:
       glob: '*.{js,ts,jsx,tsx}'
-      run: npx eslint "{staged_files}" && npx prettier --write "{staged_files}"
+      # run: npx eslint "{staged_files}" && npx prettier --write "{staged_files}"
+      run: pnpm exec eslint "{staged_files}" && pnpm exec prettier --write "{staged_files}"
       stage_fixed: true
 
     # Prettify only Markdown and JSON files
