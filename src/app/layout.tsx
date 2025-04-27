@@ -2,6 +2,7 @@ import { SiteHeader } from "@/components/site-header";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { site } from "@/config/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,8 +15,30 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "UI - ram.codes",
-  description: "shadcn registry items by ram",
+  title: site.title,
+  description: site.description,
+  openGraph: {
+    siteName: site.title,
+    type: "website",
+    locale: "en_US",
+    url: site.url,
+    title: site.title,
+    description: site.description,
+    images: [
+      {
+        url: site.url + "/og?title=UI",
+        width: 1200,
+        height: 630,
+        alt: "ui.ram.codes",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.title,
+    description: site.description,
+    images: [site.url + "/og?title=UI"],
+  },
 };
 
 export default function RootLayout({
