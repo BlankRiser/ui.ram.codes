@@ -75,7 +75,7 @@ export function SiteHeader() {
                   <div className=" flex flex-col gap-4">
                     {menu.map((item) => {
                       return (
-                        <Button variant="link" asChild>
+                        <Button key={item.url} variant="link" asChild>
                           <Link
                             key={item.title}
                             href={item.url}

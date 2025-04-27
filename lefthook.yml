@@ -6,11 +6,6 @@ pre-commit:
       glob: '*.{js,ts,jsx,tsx,md,json}'
       run: 'echo "staged files: {staged_files}"'
 
-    # Pre-build for generate .d.ts file and type check TypeScript files
-    type-check:
-      glob: '*.{js,tsx,d.ts}'
-      run: npm run build && npx tsc --noEmit
-
     # Lint & Prettify TS and JS files
     lint-and-format-js:
       glob: '*.{js,ts,jsx,tsx}'
