@@ -13,7 +13,7 @@ export default function ComponentGroupPage() {
   const componentGroup = getComponentGroup(group as string);
   if (!componentGroup) {
     return (
-      <div className="max-w-3xl mx-auto flex flex-col min-h-svh px-4 py-8 gap-8">
+      <div className="flex flex-col px-4 py-8 gap-8">
         <h1 className="text-2xl font-bold">Group not found</h1>
         <p className="text-muted-foreground">
           The group you are looking for does not exist.
@@ -23,7 +23,7 @@ export default function ComponentGroupPage() {
   }
 
   return (
-    <div className="max-w-3xl mx-auto flex flex-col min-h-svh px-4 py-8 gap-8">
+    <div className="flex flex-col px-4 py-8 gap-8">
       {componentGroup.components.map((component) => {
         return (
           <div key={component.name} className="flex flex-col gap-2">

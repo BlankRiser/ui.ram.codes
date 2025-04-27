@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Docse() {
   return (
-    <div className="max-w-3xl mx-auto flex flex-col min-h-svh px-4 py-8 gap-8">
+    <div className="flex flex-col min-h-svh px-4 py-8 gap-8">
       {allComponents.map((component) => {
         return (
           <div key={component.name} className="flex flex-col gap-2">

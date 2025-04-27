@@ -18,7 +18,7 @@ export default async function ComponentLayout({
 
   if (!componentToRender) {
     return (
-      <div className="max-w-3xl mx-auto flex flex-col min-h-svh px-4 py-8 gap-8">
+      <div className="flex flex-col min-h-svh px-4 py-8 gap-8">
         <h1 className="text-2xl font-bold">Component not found</h1>
         <p className="text-muted-foreground">
           The component you are looking for does not exist.
