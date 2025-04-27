@@ -1,3 +1,8 @@
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable";
 import { ComponentCategory } from "@/config/components-list";
 import { OpenInV0Button } from "./open-in-v0-button";
 
@@ -7,11 +12,10 @@ type ComponentViewerProps = {
 
 export const ComponentViewer = ({ component }: ComponentViewerProps) => {
   const RenderedComponent = component.component;
-
   return (
-    <main className="flex flex-col flex-1 gap-8">
-      <div className="flex flex-col gap-4 border rounded-lg  min-h-[450px] relative">
-        <div className="flex items-center justify-between border-b p-4">
+    <main className="flex flex-col flex-1">
+      <div className="flex flex-col border rounded-lg overflow-hidden min-h-[450px] relative">
+        <div className="flex items-center justify-between border-b p-2">
           <h2 className="text-sm text-foreground sm:pl-3">{component.name}</h2>
           <OpenInV0Button
             groupName={component.group}
@@ -19,10 +23,24 @@ export const ComponentViewer = ({ component }: ComponentViewerProps) => {
             className="w-fit"
           />
         </div>
-        <div className="flex items-center justify-center min-h-[400px] relative p-4">
-          <RenderedComponent />
+        <div className="flex items-center justify-center min-h-[400px] relative">
+          <MediaQueryViewer>
+            <RenderedComponent />
+          </MediaQueryViewer>
         </div>
       </div>
     </main>
+  );
+};
+
+const MediaQueryViewer = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <ResizablePanelGroup direction="horizontal" className="">
+      <ResizablePanel minSize={40} defaultSize={100}>
+        <div className=" p-2">{children}</div>
+      </ResizablePanel>
+      <ResizableHandle className="border" />
+      <ResizablePanel defaultSize={0} />
+    </ResizablePanelGroup>
   );
 };

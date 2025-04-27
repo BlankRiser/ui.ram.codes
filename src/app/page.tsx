@@ -1,37 +1,49 @@
 "use client";
 
-import { OpenInV0Button } from "@/components/open-in-v0-button";
-import HighchartsLineChart from "@/registry/charts/highcharts/line-chart";
-
-import * as React from "react";
-// This page displays items from the custom registry.
-// You are free to implement this with your own design as needed.
+import { Button } from "@/components/ui/button";
+import { MoveRight, PhoneCall } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="max-w-3xl mx-auto flex flex-col min-h-svh px-4 py-8 gap-8">
-      <header className="flex flex-col gap-1">
-        <h1 className="text-3xl font-bold tracking-tight">Custom Registry</h1>
-        <p className="text-muted-foreground">
-          A custom registry for distributing code using shadcn.
-        </p>
-      </header>
-      <main className="flex flex-col flex-1 gap-8">
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm text-muted-foreground sm:pl-3">
-              A login form with a CSS file.
-            </h2>
-            <OpenInV0Button
-              componentName="example-with-css"
-              className="w-fit"
-            />
-          </div>
-          <div className="flex items-center justify-center min-h-[400px] relative">
-            <HighchartsLineChart />
+    <main className="">
+      <div className="w-full">
+        <div className="container mx-auto">
+          <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col">
+            <div>
+              <Link href="/docs">
+                <Button asChild variant="secondary" size="sm" className="gap-4">
+                  <span>
+                    Your UI, ready to go. <MoveRight className="w-4 h-4" />
+                  </span>
+                </Button>
+              </Link>
+            </div>
+            <div className="flex gap-4 flex-col items-center">
+              <h1 className="text-5xl md:text-7xl max-w-4xl tracking-tighter text-center font-regular">
+                Build Faster with Ready-to-Use Shadcn Components
+              </h1>
+              <p className="text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center">
+                Copy, paste, or install beautiful components in seconds — power
+                your project with clean, customizable UI blocks built with
+                shadcn/ui and Tailwind CSS.
+              </p>
+            </div>
+            <div className="flex flex-row gap-3">
+              <Button className="gap-4" variant="outline">
+                Install via cli
+              </Button>
+              <Link href="/docs">
+                <Button asChild className="gap-4">
+                  <span>
+                    Get Components <MoveRight className="w-4 h-4" />
+                  </span>
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }

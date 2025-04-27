@@ -10,16 +10,22 @@
     "registry:build": "shadcn build"
   },
   "dependencies": {
+    "@radix-ui/react-accordion": "^1.2.8",
+    "@radix-ui/react-checkbox": "^1.2.3",
+    "@radix-ui/react-dialog": "^1.1.11",
     "@radix-ui/react-label": "^2.1.4",
+    "@radix-ui/react-navigation-menu": "^1.2.10",
     "@radix-ui/react-slot": "^1.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "highcharts": "^12.2.0",
     "highcharts-react-official": "^3.2.1",
     "lucide-react": "^0.487.0",
+    "motion": "^12.9.2",
     "next": "15.3.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "react-resizable-panels": "^2.1.8",
     "shadcn": "^2.4.1",
     "tailwind-merge": "^3.2.0",
     "zod": "^3.24.3"
