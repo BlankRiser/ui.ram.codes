@@ -12,7 +12,7 @@ export function OpenInV0Button({
   groupName?: string;
 } & React.ComponentProps<typeof Button>) {
   const componentPath = groupName
-    ? `${groupName}/${componentName}`
+    ? `${groupName}-${componentName}`
     : `${componentName}`;
 
   return (
@@ -21,7 +21,7 @@ export function OpenInV0Button({
       size="sm"
       className={cn(
         "shadow-none bg-black text-white hover:bg-black hover:text-white dark:bg-white dark:text-black",
-        className
+        className,
       )}
       asChild
     >
