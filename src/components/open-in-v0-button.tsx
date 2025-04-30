@@ -3,15 +3,11 @@
 import { Button } from "@/components/ui/button";
 
 export function OpenInV0Button({
-  groupName,
   componentName,
 }: {
   componentName: string;
-  groupName?: string;
 } & React.ComponentProps<typeof Button>) {
-  const componentPath = groupName
-    ? `${groupName}-${componentName}`
-    : `${componentName}`;
+  const componentPath = `${componentName}`;
 
   return (
     <Button aria-label="Open in v0" variant="outline" size="icon" asChild>

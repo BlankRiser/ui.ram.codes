@@ -5,14 +5,12 @@ import {
 } from "@/components/ui/resizable";
 import { ComponentCategory } from "@/config/components-list";
 import { OpenInV0Button } from "./open-in-v0-button";
-import { useCurrentSelection } from "@/providers/current-selection-provider";
 
 type ComponentViewerProps = {
   component: ComponentCategory["components"][number]["components"][number];
 };
 
 export const ComponentViewer = ({ component }: ComponentViewerProps) => {
-  const componentsToRender = useCurrentSelection();
   const RenderedComponent = component.component;
   return (
     <main className="flex flex-col flex-1">
@@ -22,10 +20,7 @@ export const ComponentViewer = ({ component }: ComponentViewerProps) => {
             {component.name}
           </span>
           <div>
-            <OpenInV0Button
-              groupName={componentsToRender.group}
-              componentName={component.slug}
-            />
+            <OpenInV0Button componentName={component.slug} />
           </div>
         </div>
         <div className="flex items-center justify-center min-h-[400px] relative">
