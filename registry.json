@@ -30,6 +30,20 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "recharts-line-chart-1",
+      "type": "registry:component",
+      "title": "Recharts Line Chart 1",
+      "description": "Line chart component built using Recharts",
+      "registryDependencies": ["button"],
+      "dependencies": ["recharts"],
+      "files": [
+        {
+          "path": "src/registry/charts/recharts/line-chart-1.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }

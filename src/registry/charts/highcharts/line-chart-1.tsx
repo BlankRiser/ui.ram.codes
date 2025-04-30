@@ -1,29 +1,55 @@
 "use client";
 
-import React from "react";
 import Highcharts from "highcharts";
 import { HighchartsReact } from "highcharts-react-official";
 
 const options: Highcharts.Options = {
+  credits: {
+    enabled: false, // Do this only if you have a license
+  },
+  chart: {
+    backgroundColor: "var(--background)",
+  },
   title: {
     text: "Sample Line Chart",
-  },
-  credits: {
-    enabled: false,
+    style: {
+      color: "var(--foreground)",
+    },
   },
   subtitle: {
     text: "An example of a line chart with Highcharts and React",
+    style: {
+      color: "var(--foreground)",
+    },
   },
   xAxis: {
     title: {
       text: "Months",
+      style: {
+        color: "var(--foreground)",
+      },
+    },
+    labels: {
+      style: {
+        color: "var(--foreground)",
+      },
     },
     categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
   },
   yAxis: {
     title: {
       text: "Values",
+      style: {
+        color: "var(--foreground)",
+      },
     },
+    labels: {
+      style: {
+        color: "var(--foreground)",
+      },
+    },
+    gridLineColor: "var(--muted)",
+    gridLineWidth: 1,
   },
   tooltip: {
     shared: true,
@@ -34,6 +60,9 @@ const options: Highcharts.Options = {
     align: "center",
     verticalAlign: "bottom",
     borderWidth: 0,
+    itemStyle: {
+      color: "var(--foreground)",
+    },
   },
   series: [
     {
@@ -42,7 +71,10 @@ const options: Highcharts.Options = {
       color: "var(--chart-1)",
       data: [1, 3, 2, 4, 5, 6, 7],
       dataLabels: {
-        enabled: true,
+        enabled: false,
+        style: {
+          color: "var(--foreground)",
+        },
       },
     },
     {

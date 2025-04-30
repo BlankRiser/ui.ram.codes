@@ -24,9 +24,9 @@ export const CopyCommand = ({ componentName }: { componentName: string }) => {
             packageManager: value as "pnpm" | "npm" | "yarn" | "bun",
           });
         }}
-        className="rounded-md"
+        className="rounded-md overflow-clip"
       >
-        <TabsList className="h-auto  justify-start rounded-none border-b px-4 py-0 w-full">
+        <TabsList className="h-auto justify-start rounded-none border-b px-4 py-0 w-full">
           <TabsTrigger
             className="max-w-fit text-neutral-500 data-[state=active]:after:bg-primary relative rounded-none py-2 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:text-neutral-900"
             value="npm"

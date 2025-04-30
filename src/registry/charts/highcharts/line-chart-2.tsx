@@ -5,11 +5,21 @@ import Highcharts from "highcharts";
 import { HighchartsReact } from "highcharts-react-official";
 
 const options: Highcharts.Options = {
+  credits: {
+    enabled: false, // Do this only if you have a license
+  },
+  chart: {
+    backgroundColor: "var(--background)",
+    panning: {
+      enabled: true,
+    },
+    zooming: {
+      type: "x",
+    },
+    panKey: "shift",
+  },
   title: {
     text: "",
-  },
-  credits: {
-    enabled: false,
   },
   subtitle: {
     text: "Chart with plot bands and lines",
@@ -22,19 +32,36 @@ const options: Highcharts.Options = {
     },
   },
   xAxis: {
+    title: {
+      text: "Months",
+      style: {
+        color: "var(--foreground)",
+      },
+    },
+    labels: {
+      style: {
+        color: "var(--foreground)",
+      },
+    },
     categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
     plotBands: [
       {
-        color: "var(--color-red-100)",
+        color: "var(--accent)",
         from: 3, // Start of the plot band
         to: 4, // End of the plot band
       },
     ],
     plotLines: [
       {
-        color: "var(--color-red-800)",
+        color: "var(--color-blue-800)",
         dashStyle: "DashDot",
-        value: 2, // Value of where the line will appear
+        value: 1, // Value of where the line will appear
+        width: 1, // Width of the line
+      },
+      {
+        color: "var(--color-green-800)",
+        dashStyle: "LongDash",
+        value: 5, // Value of where the line will appear
         width: 1, // Width of the line
       },
     ],
@@ -42,7 +69,17 @@ const options: Highcharts.Options = {
   yAxis: {
     title: {
       text: "Values",
+      style: {
+        color: "var(--foreground)",
+      },
     },
+    labels: {
+      style: {
+        color: "var(--foreground)",
+      },
+    },
+    gridLineColor: "var(--muted)",
+    gridLineWidth: 1,
   },
   tooltip: {
     shared: true,
@@ -53,6 +90,9 @@ const options: Highcharts.Options = {
     align: "right",
     verticalAlign: "top",
     borderWidth: 0,
+    itemStyle: {
+      color: "var(--foreground)",
+    },
   },
   series: [
     {
@@ -62,6 +102,9 @@ const options: Highcharts.Options = {
       data: [1, 3, 2, 4, 5, 6, 7],
       dataLabels: {
         enabled: true,
+        style: {
+          color: "var(--foreground)",
+        },
       },
     },
     {
@@ -71,6 +114,9 @@ const options: Highcharts.Options = {
       data: [2, 2, 3, 5, 3, 2, 4],
       dataLabels: {
         enabled: true,
+        style: {
+          color: "var(--foreground)",
+        },
       },
     },
   ],

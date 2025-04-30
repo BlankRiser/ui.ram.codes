@@ -1,5 +1,6 @@
 import { HighchartsLineChart1 } from "@/registry/charts/highcharts/line-chart-1";
 import { HighchartsLineChart2 } from "@/registry/charts/highcharts/line-chart-2";
+import { RechartsLineChart1 } from "@/registry/charts/recharts/line-chart-1";
 import { JSX } from "react";
 
 export interface ComponentCategory {
@@ -10,7 +11,6 @@ export interface ComponentCategory {
     slug: string;
     name: string;
     description: string;
-    group: string;
     components: Array<{
       slug: string;
       name: string;
@@ -25,13 +25,12 @@ export interface ComponentCategory {
 
 export const allComponents: Array<ComponentCategory> = [
   {
-    slug: "charts",
+    slug: "highcharts",
     name: "Highcharts",
     description: "A line chart using Highcharts Tailwind.",
     components: [
       {
-        group: "highcharts",
-        slug: "highcharts",
+        slug: "line-chart",
         name: "Line Chart",
         description: "Line chart using Highcharts",
         components: [
@@ -45,11 +44,33 @@ export const allComponents: Array<ComponentCategory> = [
           },
           {
             slug: "highcharts-line-chart-2",
-            name: "Line Chart 2",
+            name: "Line Chart with plot bands and plot lines",
             description: "Line chart using Highcharts",
             importPath: "@/registry/charts/highcharts/line-chart-2",
             component: HighchartsLineChart2,
             tags: ["chart", "highcharts", "react"],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "recharts",
+    name: "Recharts",
+    description: "A line chart using Recharts Tailwind.",
+    components: [
+      {
+        slug: "line-chart",
+        name: "Line Chart",
+        description: "Line chart using Recharts",
+        components: [
+          {
+            slug: "recharts-line-chart-1",
+            name: "Line Chart 1",
+            description: "Line chart using Recharts",
+            importPath: "@/registry/charts/recharts/line-chart-1",
+            component: RechartsLineChart1,
+            tags: ["chart", "recharts", "react"],
           },
         ],
       },
