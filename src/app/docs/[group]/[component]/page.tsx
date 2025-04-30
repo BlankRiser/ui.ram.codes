@@ -1,12 +1,13 @@
 "use client";
 
 import { ComponentViewer } from "@/components/component-viewer";
+import { CopyCommand } from "@/components/copy-command";
 import { useCurrentSelection } from "@/providers/current-selection-provider";
 
 export default function ComponentsPage() {
-  const componentToRender = useCurrentSelection();
+  const componentsToRender = useCurrentSelection();
 
-  if (!componentToRender) {
+  if (!componentsToRender) {
     return (
       <div className="flex flex-col min-h-svh px-4 py-8 gap-8">
         <h1 className="text-2xl font-bold">Component not found</h1>
@@ -18,8 +19,15 @@ export default function ComponentsPage() {
   }
 
   return (
-    <div>
-      <ComponentViewer component={componentToRender} />
+    <div className="space-y-4">
+      {componentsToRender.components.map((component) => {
+        return (
+          <div key={component.slug} className="flex flex-col gap-2">
+            <ComponentViewer component={component} />
+            <CopyCommand componentName={component.slug} />
+          </div>
+        );
+      })}
     </div>
   );
 }

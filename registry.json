@@ -4,15 +4,29 @@
   "homepage": "https://devhaven.ram.codes",
   "items": [
     {
-      "name": "highcharts-line-chart",
+      "name": "highcharts-line-chart-1",
       "type": "registry:component",
-      "title": "Hello World",
-      "description": "A simple hello world component",
+      "title": "Highcharts Line Chart 1",
+      "description": "Line chart component built using Highcharts",
       "registryDependencies": ["button"],
       "dependencies": ["highcharts", "@types/highcharts", "highcharts-react-official"],
       "files": [
         {
-          "path": "src/registry/charts/highcharts/line-chart.tsx",
+          "path": "src/registry/charts/highcharts/line-chart-1.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "highcharts-line-chart-2",
+      "type": "registry:component",
+      "title": "Highcharts Line Chart 2",
+      "description": "Line chart component built using Highcharts",
+      "registryDependencies": ["button"],
+      "dependencies": ["highcharts", "@types/highcharts", "highcharts-react-official"],
+      "files": [
+        {
+          "path": "src/registry/charts/highcharts/line-chart-2.tsx",
           "type": "registry:component"
         }
       ]

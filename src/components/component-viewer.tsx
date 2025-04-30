@@ -5,23 +5,28 @@ import {
 } from "@/components/ui/resizable";
 import { ComponentCategory } from "@/config/components-list";
 import { OpenInV0Button } from "./open-in-v0-button";
+import { useCurrentSelection } from "@/providers/current-selection-provider";
 
 type ComponentViewerProps = {
-  component: ComponentCategory["components"][number];
+  component: ComponentCategory["components"][number]["components"][number];
 };
 
 export const ComponentViewer = ({ component }: ComponentViewerProps) => {
+  const componentsToRender = useCurrentSelection();
   const RenderedComponent = component.component;
   return (
     <main className="flex flex-col flex-1">
       <div className="flex flex-col border rounded-lg overflow-hidden min-h-[450px] relative">
         <div className="flex items-center justify-between border-b p-2">
-          <h2 className="text-sm text-foreground sm:pl-3">{component.name}</h2>
-          <OpenInV0Button
-            groupName={component.group}
-            componentName={component.slug}
-            className="w-fit"
-          />
+          <span className="text-sm text-foreground sm:pl-3">
+            {component.name}
+          </span>
+          <div>
+            <OpenInV0Button
+              groupName={componentsToRender.group}
+              componentName={component.slug}
+            />
+          </div>
         </div>
         <div className="flex items-center justify-center min-h-[400px] relative">
           <MediaQueryViewer>
@@ -39,7 +44,7 @@ const MediaQueryViewer = ({ children }: { children: React.ReactNode }) => {
       <ResizablePanel minSize={40} defaultSize={100}>
         <div className=" p-2">{children}</div>
       </ResizablePanel>
-      <ResizableHandle className="border" />
+      <ResizableHandle className="border" withHandle />
       <ResizablePanel defaultSize={0} />
     </ResizablePanelGroup>
   );

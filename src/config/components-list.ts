@@ -1,4 +1,5 @@
-import HighchartsLineChart from "@/registry/charts/highcharts/line-chart";
+import { HighchartsLineChart1 } from "@/registry/charts/highcharts/line-chart-1";
+import { HighchartsLineChart2 } from "@/registry/charts/highcharts/line-chart-2";
 import { JSX } from "react";
 
 export interface ComponentCategory {
@@ -6,13 +7,18 @@ export interface ComponentCategory {
   name: string;
   description: string;
   components: Array<{
-    name: string;
     slug: string;
+    name: string;
     description: string;
-    importPath: string;
-    tags: Array<string>;
     group: string;
-    component: () => JSX.Element;
+    components: Array<{
+      slug: string;
+      name: string;
+      description: string;
+      importPath: string;
+      component: () => JSX.Element;
+      tags: Array<string>;
+    }>;
   }>;
   isNew?: boolean;
 }
@@ -24,13 +30,28 @@ export const allComponents: Array<ComponentCategory> = [
     description: "A line chart using Highcharts Tailwind.",
     components: [
       {
-        slug: "line-chart",
         group: "highcharts",
-        name: "Line Chart (Highcharts)",
+        slug: "highcharts",
+        name: "Line Chart",
         description: "Line chart using Highcharts",
-        importPath: "@/registry/charts/highcharts/line-chart",
-        component: HighchartsLineChart,
-        tags: ["chart", "highcharts", "react"],
+        components: [
+          {
+            slug: "highcharts-line-chart-1",
+            name: "Line Chart 1",
+            description: "Line chart using Highcharts",
+            importPath: "@/registry/charts/highcharts/line-chart-1",
+            component: HighchartsLineChart1,
+            tags: ["chart", "highcharts", "react"],
+          },
+          {
+            slug: "highcharts-line-chart-2",
+            name: "Line Chart 2",
+            description: "Line chart using Highcharts",
+            importPath: "@/registry/charts/highcharts/line-chart-2",
+            component: HighchartsLineChart2,
+            tags: ["chart", "highcharts", "react"],
+          },
+        ],
       },
     ],
   },

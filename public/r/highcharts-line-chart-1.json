@@ -1,9 +1,9 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "highcharts-line-chart",
+  "name": "highcharts-line-chart-1",
   "type": "registry:component",
-  "title": "Hello World",
-  "description": "A simple hello world component",
+  "title": "Highcharts Line Chart 1",
+  "description": "Line chart component built using Highcharts",
   "dependencies": [
     "highcharts",
     "@types/highcharts",
