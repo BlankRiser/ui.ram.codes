@@ -1,0 +1,8 @@
+{
+    "typescript.preferences.autoImportSpecifierExcludeRegexes": [
+        "@radix-ui",
+        "next/router",
+        "next/navigation",
+        "^lucide-react/dist/lucide-react.suffixed$",
+    ]
+}

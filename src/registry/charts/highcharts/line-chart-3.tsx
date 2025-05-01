@@ -44,24 +44,11 @@ const options: Highcharts.Options = {
       },
     },
     categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
-    plotBands: [
-      {
-        color: "var(--accent)",
-        from: 3,
-        to: 4,
-      },
-    ],
     plotLines: [
-      {
-        color: "var(--color-blue-800)",
-        dashStyle: "DashDot",
-        value: 1, // Category index
-        width: 1,
-      },
       {
         color: "var(--color-green-800)",
         dashStyle: "LongDash",
-        value: 5, // Category index
+        value: 3, // Category index
         width: 1,
       },
     ],
@@ -97,32 +84,49 @@ const options: Highcharts.Options = {
   series: [
     {
       type: "spline",
-      name: "Series 1",
-      color: "var(--chart-1)",
-      data: [1, 3, 2, 4, 5, 6, 7],
-      dataLabels: {
-        enabled: true,
-        style: {
-          color: "var(--foreground)",
-        },
-      },
-    },
-    {
-      type: "spline",
       name: "Series 2",
-      color: "var(--chart-2)",
       data: [2, 2, 3, 5, 3, 2, 4],
+      color: {
+        linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+        stops: [
+          [0, "var(--chart-2)"],
+          [1, "var(--chart-4)"],
+        ],
+      },
       dataLabels: {
         enabled: true,
         style: {
           color: "var(--foreground)",
         },
       },
+      marker: {
+        symbol: "diamond",
+        lineWidth: 1,
+        lineColor: "var(--chart-4)",
+        fillColor: "var(--secondary)",
+      },
+      zones: [
+        {
+          value: 3, // All values equal to ot below will be dotted
+          color: {
+            linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+            stops: [
+              [0, "var(--chart-1)"],
+              [1, "var(--chart-5)"],
+            ],
+          },
+          dashStyle: "DashDot",
+        },
+        {
+          // If no value is specified, the zone will apply this confiig other values
+          dashStyle: "LongDashDot",
+        },
+      ],
     },
   ],
 };
 
-export const HighchartsLineChart2 = () => (
+export const HighchartsLineChart3 = () => (
   <div className="w-full h-full">
     <HighchartsReact highcharts={Highcharts} options={options} />
   </div>

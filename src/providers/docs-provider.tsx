@@ -10,7 +10,7 @@ export const DocsProvider = ({ children }: { children: React.ReactNode }) => {
         <div className="flex flex-1">
           <AppSidebar />
           <SidebarInset>
-            <div className="p-2">{children}</div>
+            <div className="p-2 md:p-4">{children}</div>
           </SidebarInset>
         </div>
       </SidebarProvider>

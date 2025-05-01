@@ -1,5 +1,6 @@
 import { HighchartsLineChart1 } from "@/registry/charts/highcharts/line-chart-1";
 import { HighchartsLineChart2 } from "@/registry/charts/highcharts/line-chart-2";
+import { HighchartsLineChart3 } from "@/registry/charts/highcharts/line-chart-3";
 import { RechartsLineChart1 } from "@/registry/charts/recharts/line-chart-1";
 import { JSX } from "react";
 
@@ -11,13 +12,13 @@ export interface ComponentCategory {
     slug: string;
     name: string;
     description: string;
+    tags: Array<string>;
     components: Array<{
       slug: string;
       name: string;
       description: string;
       importPath: string;
       component: () => JSX.Element;
-      tags: Array<string>;
     }>;
   }>;
   isNew?: boolean;
@@ -33,22 +34,28 @@ export const allComponents: Array<ComponentCategory> = [
         slug: "line-chart",
         name: "Line Chart",
         description: "Line chart using Highcharts",
+        tags: ["chart", "highcharts", "react"],
         components: [
           {
             slug: "highcharts-line-chart-1",
-            name: "Line Chart 1",
+            name: "Basic Line Chart",
             description: "Line chart using Highcharts",
             importPath: "@/registry/charts/highcharts/line-chart-1",
             component: HighchartsLineChart1,
-            tags: ["chart", "highcharts", "react"],
           },
           {
             slug: "highcharts-line-chart-2",
             name: "Line Chart with plot bands and plot lines",
-            description: "Line chart using Highcharts",
+            description: "Line Chart with plot bands and plot lines",
             importPath: "@/registry/charts/highcharts/line-chart-2",
             component: HighchartsLineChart2,
-            tags: ["chart", "highcharts", "react"],
+          },
+          {
+            slug: "highcharts-line-chart-3",
+            name: "Line Chart with series customization",
+            description: "Line Chart with series customization",
+            importPath: "@/registry/charts/highcharts/line-chart-2",
+            component: HighchartsLineChart3,
           },
         ],
       },
@@ -63,6 +70,7 @@ export const allComponents: Array<ComponentCategory> = [
         slug: "line-chart",
         name: "Line Chart",
         description: "Line chart using Recharts",
+        tags: ["chart", "recharts", "react"],
         components: [
           {
             slug: "recharts-line-chart-1",
@@ -70,7 +78,6 @@ export const allComponents: Array<ComponentCategory> = [
             description: "Line chart using Recharts",
             importPath: "@/registry/charts/recharts/line-chart-1",
             component: RechartsLineChart1,
-            tags: ["chart", "recharts", "react"],
           },
         ],
       },

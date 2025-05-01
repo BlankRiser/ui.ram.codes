@@ -48,15 +48,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <GlobalProvider>
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased [--header-height:calc(theme(spacing.14))]`}
-        >
-          <SiteHeader />
-          {children}
-        </body>
-      </GlobalProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased [--header-height:calc(theme(spacing.14))]`}
+      >
+        <GlobalProvider>
+          <div>
+            <SiteHeader />
+            {children}
+          </div>
+        </GlobalProvider>
+      </body>
     </html>
   );
 }
