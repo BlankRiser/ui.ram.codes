@@ -15,8 +15,9 @@ pre-commit:
 
     # Build registry
     build-registry:
-      glob: 'packages/registry/**/*.{js,ts,jsx,tsx}'
+      glob: '*.{js,ts,jsx,tsx}'
       run: pnpm run registry:build
+      stage_fixed: true
 
     # Prettify only Markdown and JSON files
     format-md-json:
