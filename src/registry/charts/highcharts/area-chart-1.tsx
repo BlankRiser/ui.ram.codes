@@ -11,13 +11,13 @@ const options: Highcharts.Options = {
     backgroundColor: "var(--background)",
   },
   title: {
-    text: "Sample Line Chart",
+    text: "Sample Area Chart",
     style: {
       color: "var(--foreground)",
     },
   },
   subtitle: {
-    text: "An example of a line chart with Highcharts and React",
+    text: "An example of a area chart with Highcharts and React",
     style: {
       color: "var(--foreground)",
     },
@@ -66,7 +66,7 @@ const options: Highcharts.Options = {
   },
   series: [
     {
-      type: "spline",
+      type: "areaspline",
       name: "Series 1",
       color: "var(--chart-1)",
       data: [1, 3, 2, 4, 5, 6, 7],
@@ -76,27 +76,19 @@ const options: Highcharts.Options = {
           color: "var(--foreground)",
         },
       },
-      marker: {
-        enabled: false,
-        symbol: "circle",
-      },
     },
     {
-      type: "spline",
+      type: "areaspline",
       name: "Series 2",
       color: "var(--chart-2)",
       data: [2, 2, 3, 5, 3, 2, 4],
       dataLabels: {
         enabled: true,
       },
-      marker: {
-        enabled: false,
-        symbol: "circle",
-      },
     },
   ],
 };
 
-export const HighchartsLineChart1 = () => (
+export const HighchartsAreaChart1 = () => (
   <HighchartsReact highcharts={Highcharts} options={options} />
 );

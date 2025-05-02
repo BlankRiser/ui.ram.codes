@@ -13,6 +13,11 @@ pre-commit:
       run: pnpm exec eslint "{staged_files}" && pnpm exec prettier --write "{staged_files}"
       stage_fixed: true
 
+    # Build registry
+    build-registry:
+      glob: 'packages/registry/**/*.{js,ts,jsx,tsx}'
+      run: pnpm run registry:build
+
     # Prettify only Markdown and JSON files
     format-md-json:
       glob: '*.{md|json}'

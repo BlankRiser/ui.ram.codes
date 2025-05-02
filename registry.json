@@ -46,6 +46,20 @@
       ]
     },
     {
+      "name": "highcharts-area-chart-1",
+      "type": "registry:component",
+      "title": "Highcharts Area Chart 1",
+      "description": "Area chart component built using Highcharts",
+      "registryDependencies": ["button"],
+      "dependencies": ["highcharts", "@types/highcharts", "highcharts-react-official"],
+      "files": [
+        {
+          "path": "src/registry/charts/highcharts/area-chart-1.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "recharts-line-chart-1",
       "type": "registry:component",
       "title": "Recharts Line Chart 1",

@@ -1,3 +1,4 @@
+import { HighchartsAreaChart1 } from "@/registry/charts/highcharts/area-chart-1";
 import { HighchartsLineChart1 } from "@/registry/charts/highcharts/line-chart-1";
 import { HighchartsLineChart2 } from "@/registry/charts/highcharts/line-chart-2";
 import { HighchartsLineChart3 } from "@/registry/charts/highcharts/line-chart-3";
@@ -56,6 +57,21 @@ export const allComponents: Array<ComponentCategory> = [
             description: "Line Chart with series customization",
             importPath: "@/registry/charts/highcharts/line-chart-2",
             component: HighchartsLineChart3,
+          },
+        ],
+      },
+      {
+        slug: "area-chart",
+        name: "Area Chart",
+        description: "Area chart using Highcharts",
+        tags: ["chart", "highcharts", "react"],
+        components: [
+          {
+            slug: "highcharts-area-chart-1",
+            name: "Basic Area Chart",
+            description: "Area chart using Highcharts",
+            importPath: "@/registry/charts/highcharts/area-chart-1",
+            component: HighchartsAreaChart1,
           },
         ],
       },
