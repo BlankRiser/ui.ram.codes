@@ -76,6 +76,10 @@ const options: Highcharts.Options = {
           color: "var(--foreground)",
         },
       },
+      marker: {
+        enabled: false,
+        symbol: "circle",
+      },
     },
     {
       type: "areaspline",
@@ -84,6 +88,10 @@ const options: Highcharts.Options = {
       data: [2, 2, 3, 5, 3, 2, 4],
       dataLabels: {
         enabled: true,
+      },
+      marker: {
+        enabled: false,
+        symbol: "circle",
       },
     },
   ],
