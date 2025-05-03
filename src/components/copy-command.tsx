@@ -29,28 +29,16 @@ export const CopyCommand = ({ componentName }: { componentName: string }) => {
           className="rounded-md overflow-clip"
         >
           <TabsList className="h-auto justify-start rounded-none border-b px-4 py-0 w-full">
-            <TabsTrigger
-              className="max-w-fit text-neutral-500 data-[state=active]:after:bg-primary relative rounded-none py-2 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:text-neutral-900"
-              value="npm"
-            >
+            <TabsTrigger variant="border" value="npm">
               npm
             </TabsTrigger>
-            <TabsTrigger
-              className="max-w-fit text-neutral-500 data-[state=active]:after:bg-primary relative rounded-none py-2 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:text-neutral-900"
-              value="yarn"
-            >
+            <TabsTrigger variant="border" value="yarn">
               yarn
             </TabsTrigger>
-            <TabsTrigger
-              className="max-w-fit text-neutral-500 data-[state=active]:after:bg-primary relative rounded-none py-2 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:text-neutral-900"
-              value="pnpm"
-            >
+            <TabsTrigger variant="border" value="pnpm">
               pnpm
             </TabsTrigger>
-            <TabsTrigger
-              className="max-w-fit text-neutral-500 data-[state=active]:after:bg-primary relative rounded-none py-2 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:text-neutral-900"
-              value="bun"
-            >
+            <TabsTrigger variant="border" value="bun">
               bun
             </TabsTrigger>
           </TabsList>

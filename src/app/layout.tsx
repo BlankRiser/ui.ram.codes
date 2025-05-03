@@ -1,4 +1,4 @@
-import { SiteHeader } from "@/components/site-header";
+import { SiteHeader } from "@/components/navbar";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";

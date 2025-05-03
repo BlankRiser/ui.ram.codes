@@ -53,7 +53,18 @@ const options: Highcharts.Options = {
   },
   tooltip: {
     shared: true,
-    valueSuffix: " units",
+    useHTML: true,
+    backgroundColor: "transparent",
+    shadow: false,
+    formatter: function () {
+      const seriesPoints = this.points?.map((point) => {
+        return `<span style="color:${point.color}">${point.series.name}</span> : ${point.y}`;
+      });
+      return `<div class="bg-neutral-100/30 backdrop-blur-lg dark:bg-gray-900/30 p-2 text-black dark:text-white rounded shadow-lg">
+                <strong>${this.key}</strong><br>
+                ${seriesPoints?.join("<br>")}
+              </div>`;
+    },
   },
   legend: {
     layout: "horizontal",
@@ -68,7 +79,7 @@ const options: Highcharts.Options = {
     {
       type: "areaspline",
       name: "Series 1",
-      color: "var(--chart-1)",
+      color: "var(--chart-2)",
       data: [1, 3, 2, 4, 5, 6, 7],
       dataLabels: {
         enabled: false,
@@ -84,7 +95,7 @@ const options: Highcharts.Options = {
     {
       type: "areaspline",
       name: "Series 2",
-      color: "var(--chart-2)",
+      color: "var(--chart-4)",
       data: [2, 2, 3, 5, 3, 2, 4],
       dataLabels: {
         enabled: true,
