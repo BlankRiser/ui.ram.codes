@@ -3,16 +3,14 @@ import { CopyButton } from "@/components/copy-button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useConfigStore } from "@/hooks/use-config";
 
-export const CopyCommand = ({ componentName }: { componentName: string }) => {
+export const CopyCommand = ({ componentSlug }: { componentSlug: string }) => {
   const { packageManager, setConfig } = useConfigStore();
 
-  const componentPath = `${componentName}`;
-
   const commands = {
-    pnpm: `pnpm dlx shadcn@latest add ${process.env.NEXT_PUBLIC_BASE_URL}/r/${componentPath}.json`,
-    npm: `npx shadcn@latest add ${process.env.NEXT_PUBLIC_BASE_URL}/r/${componentPath}.json`,
-    yarn: `npx shadcn@latest add ${process.env.NEXT_PUBLIC_BASE_URL}/r/${componentPath}.json`,
-    bun: `bunx --bun shadcn@latest add ${process.env.NEXT_PUBLIC_BASE_URL}/r/${componentPath}.json`,
+    pnpm: `pnpm dlx shadcn@latest add ${process.env.NEXT_PUBLIC_BASE_URL}/r/${componentSlug}.json`,
+    npm: `npx shadcn@latest add ${process.env.NEXT_PUBLIC_BASE_URL}/r/${componentSlug}.json`,
+    yarn: `npx shadcn@latest add ${process.env.NEXT_PUBLIC_BASE_URL}/r/${componentSlug}.json`,
+    bun: `bunx --bun shadcn@latest add ${process.env.NEXT_PUBLIC_BASE_URL}/r/${componentSlug}.json`,
   };
 
   return (

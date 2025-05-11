@@ -10,12 +10,13 @@ export function OpenInV0Button({
   const componentPath = `${componentName}`;
 
   return (
-    <Button aria-label="Open in v0" variant="outline" size="icon" asChild>
+    <Button aria-label="Open in v0" variant="outline" asChild>
       <a
         href={`https://v0.dev/chat/api/open?url=${process.env.NEXT_PUBLIC_BASE_URL}/r/${componentPath}.json`}
         target="_blank"
         rel="noreferrer"
       >
+        Open in
         <svg
           viewBox="0 0 40 20"
           fill="none"

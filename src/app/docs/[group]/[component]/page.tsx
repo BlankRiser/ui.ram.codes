@@ -43,7 +43,7 @@ export default function ComponentsPage() {
             <div key={component.slug} className="flex flex-col gap-6">
               <h1 className="text-xl font-medium">{component.name}</h1>
               <ComponentViewer component={component} />
-              <CopyCommand componentName={component.slug} />
+              <CopyCommand componentSlug={component.slug} />
             </div>
           );
         })}

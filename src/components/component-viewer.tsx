@@ -1,9 +1,21 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { ComponentCategory } from "@/config/components-list";
+import { useCopy } from "@/hooks/use-copy";
+import { cn, convertRegistryPaths } from "@/lib/utils";
+import { useEffect, useState } from "react";
 import { OpenInV0Button } from "./open-in-v0-button";
 
 type ComponentViewerProps = {
@@ -16,12 +28,8 @@ export const ComponentViewer = ({ component }: ComponentViewerProps) => {
     <main className="flex flex-col flex-1">
       <div className="flex flex-col border rounded-lg overflow-hidden min-h-[450px] relative">
         <div className="flex items-center justify-between border-b p-2">
-          <span className="text-sm text-foreground sm:pl-3">
-            {component.name}
-          </span>
-          <div>
-            <OpenInV0Button componentName={component.slug} />
-          </div>
+          <OpenInV0Button componentName={component.slug} />
+          <CopyCode componentName={component.slug} />
         </div>
         <div className="flex items-center justify-center min-h-[400px] relative">
           <MediaQueryViewer>
@@ -42,5 +50,96 @@ const MediaQueryViewer = ({ children }: { children: React.ReactNode }) => {
       <ResizableHandle className="border" withHandle />
       <ResizablePanel defaultSize={0} />
     </ResizablePanelGroup>
+  );
+};
+
+const CopyCode = ({ componentName }: { componentName: string }) => {
+  const [code, setCode] = useState<string | null>(null);
+  const { copied, copy } = useCopy();
+
+  useEffect(() => {
+    const handleEmptyCode = () => {
+      setCode("");
+    };
+
+    const loadCode = async () => {
+      try {
+        const response = await fetch(`/r/${componentName}.json`);
+        if (!response.ok) {
+          handleEmptyCode();
+          return;
+        }
+
+        const contentType = response.headers.get("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
+          handleEmptyCode();
+          return;
+        }
+        const data = await response.json();
+        const codeContent = convertRegistryPaths(data.files[0].content) || "";
+        setCode(codeContent);
+      } catch (error) {
+        console.error("Failed to load code:", error);
+        handleEmptyCode();
+      }
+    };
+
+    loadCode();
+  }, [componentName]);
+
+  return (
+    <div>
+      <TooltipProvider delayDuration={0}>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => copy(code || "")}
+              aria-label={copied ? "Copied" : "Copy component source"}
+              disabled={copied}
+            >
+              <div
+                className={cn(
+                  "transition-all",
+                  copied ? "scale-100 opacity-100" : "scale-0 opacity-0",
+                )}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill="#10B981"
+                    d="M14.548 3.488a.75.75 0 0 1-.036 1.06l-8.572 8a.75.75 0 0 1-1.023 0l-3.429-3.2a.75.75 0 0 1 1.024-1.096l2.917 2.722 8.06-7.522a.75.75 0 0 1 1.06.036Z"
+                  />
+                </svg>
+              </div>
+              <div
+                className={cn(
+                  "absolute transition-all",
+                  copied ? "scale-0 opacity-0" : "scale-100 opacity-100",
+                )}
+              >
+                <svg
+                  className="fill-current"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path d="M3 2.5h7a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5ZM10 1H3a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm3 5.5h1a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5H7a.5.5 0 0 1-.5-.5v-1H5v1a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1v1.5Z" />
+                </svg>
+              </div>
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>Copy</TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    </div>
   );
 };
