@@ -78,11 +78,26 @@
       "type": "registry:component",
       "title": "Recharts Line Chart 1",
       "description": "Line chart component built using Recharts",
-      "registryDependencies": ["button"],
+      "registryDependencies": ["button", "chart"],
       "dependencies": ["recharts"],
       "files": [
         {
           "path": "src/registry/charts/recharts/line-chart-1.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "d3-line-chart-1",
+      "type": "registry:component",
+      "title": "D3 Line Chart 1",
+      "description": "Line chart component built using D3",
+      "registryDependencies": ["button", "chart"],
+      "dependencies": ["d3"],
+      "devDependencies": ["@types/d3"],
+      "files": [
+        {
+          "path": "src/registry/charts/d3/line-chart-1.tsx",
           "type": "registry:component"
         }
       ]

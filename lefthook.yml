@@ -10,7 +10,9 @@ pre-commit:
     # Build registry
     build-registry:
       glob: '*.{js,ts,jsx,tsx}'
-      run: pnpm run registry:build
+      run: |
+        pnpm run registry:build
+        git add -A
       stage_fixed: true  
 
     # Lint & Prettify TS and JS files

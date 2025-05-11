@@ -1,91 +1,63 @@
 "use client";
 
-import React from "react";
 import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
+import { CartesianGrid, Line, LineChart, XAxis } from "recharts";
 
 const data = [
-  {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
+  { month: "Jan", series1: 1, series2: 2 },
+  { month: "Feb", series1: 3, series2: 2 },
+  { month: "Mar", series1: 2, series2: 3 },
+  { month: "Apr", series1: 4, series2: 5 },
+  { month: "May", series1: 5, series2: 3 },
+  { month: "Jun", series1: 6, series2: 2 },
+  { month: "Jul", series1: 7, series2: 4 },
 ];
+
+const chartConfig = {
+  desktop: {
+    label: "Desktop",
+    color: "hsl(var(--chart-1))",
+  },
+} satisfies ChartConfig;
 
 export const RechartsLineChart1 = () => {
   return (
     <div className="h-[400px]">
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart
-          width={500}
-          height={300}
-          data={data}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line
-            type="monotone"
-            dataKey="pv"
-            stroke="#8884d8"
-            activeDot={{ r: 2 }}
+      <ChartContainer config={chartConfig} className="size-full">
+        <LineChart accessibilityLayer data={data} className="h-[400px]">
+          <CartesianGrid vertical={true} />
+          <XAxis
+            dataKey="month"
+            tickLine={false}
+            axisLine={false}
+            tickMargin={8}
+            tickFormatter={(value) => value.slice(0, 3)}
           />
-          <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+          <ChartTooltip
+            cursor={false}
+            content={<ChartTooltipContent hideLabel />}
+          />
+          <Line
+            dataKey="series1"
+            type="natural"
+            stroke="var(--color-chart-1)"
+            strokeWidth={2}
+            dot={false}
+          />
+          <Line
+            dataKey="series2"
+            type="natural"
+            stroke="var(--color-chart-2)"
+            strokeWidth={2}
+            dot={false}
+          />
         </LineChart>
-      </ResponsiveContainer>
+      </ChartContainer>
     </div>
   );
 };
