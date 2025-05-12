@@ -1,3 +1,5 @@
+"use client";
+
 import { useCopy } from "@/hooks/use-copy";
 import { cn } from "@/lib/utils";
 import {

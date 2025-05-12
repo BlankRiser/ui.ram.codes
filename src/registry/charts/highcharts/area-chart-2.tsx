@@ -2,7 +2,7 @@
 
 import Highcharts from "highcharts";
 import { HighchartsReact } from "highcharts-react-official";
-import "highcharts/highcharts-more";
+import "highcharts/esm/highcharts-more";
 
 const options: Highcharts.Options = {
   credits: {
