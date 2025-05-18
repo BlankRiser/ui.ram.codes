@@ -1,10 +1,15 @@
 "use client";
 
-import Highcharts from "highcharts";
+import * as Highcharts from "highcharts";
 import { HighchartsReact } from "highcharts-react-official";
-import "highcharts/esm/highcharts-more";
+import { useEffect, useState } from "react";
 
-const options: Highcharts.Options = {
+const loadHighchartsModules = async (callback: () => void) => {
+  Promise.all([
+    import("highcharts/es-modules/masters/highcharts-more.src.js"),
+  ]).then(callback);
+};
+const highchartOptions: Highcharts.Options = {
   credits: {
     enabled: false, // Do this only if you have a license
   },
@@ -116,6 +121,21 @@ const options: Highcharts.Options = {
   ],
 };
 
-export const HighchartsAreaChart2 = () => (
-  <HighchartsReact highcharts={Highcharts} options={options} />
-);
+export const HighchartsAreaChart2 = () => {
+  const [chartOptions, setChartOptions] = useState({
+    isLoading: true,
+    options: highchartOptions,
+  });
+
+  useEffect(() => {
+    loadHighchartsModules(() => {
+      setChartOptions((prev) => ({ ...prev, isLoading: false }));
+    });
+  }, []);
+
+  if (chartOptions.isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  return <HighchartsReact highcharts={Highcharts} options={chartOptions} />;
+};

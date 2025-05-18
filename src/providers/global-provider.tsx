@@ -1,5 +1,6 @@
 "use client";
 
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "next-themes";
 
 export function GlobalProvider({ children }: React.ComponentProps<"div">) {
@@ -10,7 +11,7 @@ export function GlobalProvider({ children }: React.ComponentProps<"div">) {
       enableSystem
       disableTransitionOnChange
     >
-      {children}
+      <TooltipProvider delayDuration={0}>{children}</TooltipProvider>
     </ThemeProvider>
   );
 }
