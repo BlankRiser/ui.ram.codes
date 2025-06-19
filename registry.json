@@ -98,6 +98,18 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "image-1",
+      "type": "registry:component",
+      "title": "Image",
+      "description": "image preview component",
+      "files": [
+        {
+          "path": "src/registry/ui/image-preview/image-1.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }

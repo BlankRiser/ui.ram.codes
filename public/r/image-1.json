@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "image-1",
+  "type": "registry:component",
+  "title": "Image",
+  "description": "image preview component",
+  "files": [
+    {
+      "path": "src/registry/ui/image-preview/image-1.tsx",
+      "content": "\"use client\";\n\nimport { Dialog, DialogContent, DialogTrigger } from \"@/components/ui/dialog\";\nimport React from \"react\";\n\nexport const Image1 = () => {\n  return (\n    <div>\n      <Image\n        src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Ladybugs_%28140440761%29.jpeg/640px-Ladybugs_%28140440761%29.jpeg\"\n        alt=\"A swarm of red ladybugs are eating the leaves of my prize rose bush.\"\n        width=\"500px\"\n        height=\"500px\"\n      />\n    </div>\n  );\n};\n\ninterface ImageProps extends React.HTMLAttributes<HTMLImageElement> {\n  src: string;\n  alt: string;\n  width:\n    | number\n    | `${number}px`\n    | `${number}%`\n    | `${number}rem`\n    | `${number}em`\n    | `${number}vw`;\n  height:\n    | number\n    | `${number}px`\n    | `${number}%`\n    | `${number}rem`\n    | `${number}em`\n    | `${number}vh`;\n}\n\nconst Image = ({ src, alt, height, width, ...rest }: ImageProps) => {\n  return (\n    <Dialog>\n      <DialogTrigger asChild>\n        <img src={src} alt={alt} width={width} height={height} {...rest} />\n      </DialogTrigger>\n      <DialogContent className=\"sm:max-w-7xl aspect-auto p-0 overflow-hidden\">\n        <img\n          src={src}\n          alt={alt}\n          width={width}\n          height={height}\n          className=\"object-cover size-full \"\n          {...rest}\n        />\n      </DialogContent>\n    </Dialog>\n  );\n};\n",
+      "type": "registry:component"
+    }
+  ]
+}

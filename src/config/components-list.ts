@@ -5,6 +5,7 @@ import { HighchartsLineChart2 } from "@/registry/charts/highcharts/line-chart-2"
 import { HighchartsLineChart3 } from "@/registry/charts/highcharts/line-chart-3";
 import { RechartsLineChart1 } from "@/registry/charts/recharts/line-chart-1";
 import { Button1 } from "@/registry/ui/buttons/button-1";
+import { Image1 } from "@/registry/ui/image-preview/image-1";
 import { JSX } from "react";
 
 export interface ComponentCategory {
@@ -125,6 +126,21 @@ export const allComponents: Array<ComponentCategory> = [
             description: "Button",
             importPath: "@/registry/ui/buttons/button-1",
             component: Button1,
+          },
+        ],
+      },
+      {
+        slug: "image",
+        name: "Image",
+        description: "Image Preview component",
+        tags: ["image", "react"],
+        components: [
+          {
+            slug: "image-1",
+            name: "Image 1",
+            description: "Image",
+            importPath: "@/registry/ui/image-preview/image-1",
+            component: Image1,
           },
         ],
       },
