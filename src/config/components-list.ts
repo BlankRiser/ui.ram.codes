@@ -1,10 +1,10 @@
-import { D3LineChart1 } from "@/registry/charts/d3/line-chart-1";
 import { HighchartsAreaChart1 } from "@/registry/charts/highcharts/area-chart-1";
 import { HighchartsAreaChart2 } from "@/registry/charts/highcharts/area-chart-2";
 import { HighchartsLineChart1 } from "@/registry/charts/highcharts/line-chart-1";
 import { HighchartsLineChart2 } from "@/registry/charts/highcharts/line-chart-2";
 import { HighchartsLineChart3 } from "@/registry/charts/highcharts/line-chart-3";
 import { RechartsLineChart1 } from "@/registry/charts/recharts/line-chart-1";
+import { Button1 } from "@/registry/ui/buttons/button-1";
 import { JSX } from "react";
 
 export interface ComponentCategory {
@@ -109,22 +109,22 @@ export const allComponents: Array<ComponentCategory> = [
     ],
   },
   {
-    slug: "d3",
-    name: "D3",
-    description: "A line chart using d3.",
+    slug: "ui",
+    name: "UI",
+    description: "Basic UI components.",
     components: [
       {
-        slug: "line-chart",
-        name: "Line Chart",
-        description: "Line chart using Recharts",
-        tags: ["chart", "d3", "react"],
+        slug: "button",
+        name: "Button",
+        description: "Button component",
+        tags: ["button", "react"],
         components: [
           {
-            slug: "d3-line-chart-1",
-            name: "Line Chart 1",
-            description: "Line chart using d3",
-            importPath: "@/registry/charts/d3/line-chart-1",
-            component: D3LineChart1,
+            slug: "button-1",
+            name: "Button 1",
+            description: "Button",
+            importPath: "@/registry/ui/buttons/button-1",
+            component: Button1,
           },
         ],
       },

@@ -98,19 +98,19 @@ const CopyCode = ({ componentName }: { componentName: string }) => {
         <DialogTrigger asChild>
           <Button variant="outline">Code</Button>
         </DialogTrigger>
-        <DialogContent className="max-w-[80dvw]">
+        <DialogContent className="md:max-w-4xl">
           <DialogHeader>
             <DialogTitle>
-              <span>Component source</span>
+              <span>Component source code</span>
             </DialogTitle>
           </DialogHeader>
-          <div className="prose max-h-[80dvh] sm:max-h-[600px] overflow-x-auto">
+          <div className="prose max-h-[80dvh] sm:max-h-[75dvh] max-w-[80vw] overflow-x-auto">
             {code ? (
               <ShikiHighlighter
                 language={"typescript"}
                 theme={theme === "dark" ? "vesper" : "catppuccin-latte"}
                 delay={150}
-                className="max-h-[60dvh] text-sm sm:max-h-[600px] font-mono rounded-md overflow-y-auto"
+                className="max-h-[60dvh] text-sm sm:max-h-[75dvh] max-w-[80vw] font-mono rounded-md overflow-y-auto"
               >
                 {code}
               </ShikiHighlighter>

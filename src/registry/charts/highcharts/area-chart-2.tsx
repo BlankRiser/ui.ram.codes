@@ -11,7 +11,7 @@ const loadHighchartsModules = async (callback: () => void) => {
 };
 const highchartOptions: Highcharts.Options = {
   credits: {
-    enabled: false, // Do this only if you have a license
+    enabled: true,
   },
   chart: {
     backgroundColor: "var(--background)",
